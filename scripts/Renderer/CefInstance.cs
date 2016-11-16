@@ -83,6 +83,12 @@ namespace ReactiveUI.Renderer
             return chromeBrowser;
         }
 
+
+        /// <summary>
+        /// Does what the name says, loads a page.
+        /// </summary>
+        /// <param name="page"></param>
+        /// <param name="browser"></param>
         public static void LoadPage(string page, ChromiumWebBrowser browser)
         {
             if (!File.Exists(Constants.htmlResource + page))
@@ -98,6 +104,11 @@ namespace ReactiveUI.Renderer
             browser.Load(Constants.htmlResource + page);
         }
 
+        /// <summary>
+        /// Goes back to the prevPage
+        /// </summary>
+        /// <param name="browser"></param>
+        /// todo: Improve the logic so it doesn't record current page when navigating to the same page.
         public static void GoBack(ChromiumWebBrowser browser)
         {
             browser.Load(Constants.htmlResource + prevPage);

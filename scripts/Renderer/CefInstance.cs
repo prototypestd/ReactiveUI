@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CefSharp;
 using CefSharp.WinForms;
-using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using Reactive.Framework.Events;

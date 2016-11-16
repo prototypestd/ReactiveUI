@@ -70,7 +70,6 @@ Properties/launchSettings.json
 *.tlb
 *.tli
 *.tlh
-*.tmp
 *.tmp_proj
 *.log
 *.vspscc

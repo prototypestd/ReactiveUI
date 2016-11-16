@@ -89,11 +89,16 @@ namespace ReactiveUI.Renderer
         /// </summary>
         /// <param name="page"></param>
         /// <param name="browser"></param>
-        public static void LoadPage(string page, ChromiumWebBrowser browser)
+        public static void LoadPage(string page, ChromiumWebBrowser browser = null, string pageURL = null)
         {
             if (!File.Exists(Constants.htmlResource + page))
             {
                 Reactive.Framework.Error.Debug.LogFatal("Renderer: Unable to render the requested page", true, "Unable to render the requested page");
+            }
+
+            if(browser == null)
+            {
+                browser = _instanceBrowser;
             }
 
             char splitDelimiter = '/';
@@ -101,7 +106,17 @@ namespace ReactiveUI.Renderer
             prevPage = splitText[splitText.Length - 1];
 
             //OnLoadPage(_instanceBrowser, new CEFOnLoadPageArgs("", page));
-            browser.Load(Constants.htmlResource + page);
+
+            if (String.IsNullOrEmpty(pageURL))
+            {
+
+                browser.Load(Constants.htmlResource + page);
+            }
+            else
+            {
+                browser.Load(pageURL + page);
+            }
+
         }
 
         /// <summary>

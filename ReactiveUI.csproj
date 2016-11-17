@@ -348,7 +348,9 @@
     <Content Include="html-resources\js\bootstrap.min.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="html-resources\js\buildNav.js" />
+    <Content Include="html-resources\js\buildNav.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="html-resources\js\calendar\bootstrap_calendar.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

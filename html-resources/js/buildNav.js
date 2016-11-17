@@ -1,9 +1,11 @@
 ﻿$(document).ready(function () {
     var nav = document.getElementById('navigation');
-
-    for (i = 0; i < navigationCommands.navItems; i++) {
-        var entry = document.createElement('li');
-        entry.appendChild(document.createTextNode(navigationCommands.navItems[i]));
-        nav.appendChild(entry);
+    var text;
+    
+    alert(navigationCommands.navItems);
+    for (i = 0; i < navigationCommands.navItems.length; i++) {
+        text += "<li>" + navigationCommands.navItems[i] + "</li>";
     }
+
+    nav.innerHTML = text;
 });

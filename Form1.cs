@@ -45,11 +45,24 @@ namespace ReactiveUI
         {
             ReactiveAI.Speech.SpeechTalk.Talk("Welcome Back!");
             App.pluginManager.StartHost();
+            SystemMenu.CreateSysMenu(this);
         }
 
         private void Form1_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
             Cef.Shutdown();
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            base.WndProc(ref m);
+
+            // Test if the About item was selected from the system menu
+            if ((m.Msg == SystemMenu.WM_SYSCOMMAND) &&
+               ((int)m.WParam == SystemMenu.SYSMENU_CHROME_DEV_TOOLS))
+            {
+                chromeBrowser.ShowDevTools();
+            }
         }
     }
 }

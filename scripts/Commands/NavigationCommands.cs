@@ -12,7 +12,7 @@ namespace ReactiveUI.Commands
     {
         private static ChromiumWebBrowser _instanceBrowser = null;
         private static Form1 _instanceMainWindow = null;
-        public static string[] navItems = { "test", "test2" };
+        public List<string> navItems = new List<string> { "test", "test2" };
 
         public NavigationCommands(ChromiumWebBrowser originalBrowser, Form1 form)
         {

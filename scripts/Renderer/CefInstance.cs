@@ -78,7 +78,7 @@ namespace ReactiveUI.Renderer
             }
             catch (FileNotFoundException e)
             {
-                GUI.MessageBox.ShowMessage("Unable to load main interface", "ERROR");
+                GUI.MessageBox.ShowMessage("Unable to load " + e.FileName, "CEFInstance Error");
                 Application.Exit();
             }
 
@@ -105,7 +105,11 @@ namespace ReactiveUI.Renderer
 
             char splitDelimiter = '/';
             string[] splitText = browser.Address.Split(splitDelimiter);
-            prevPage = splitText[splitText.Length - 1];
+            
+            if(!(prevPage == splitText[splitText.Length - 1]))
+            {
+                prevPage = splitText[splitText.Length - 1];
+            }
 
             //OnLoadPage(_instanceBrowser, new CEFOnLoadPageArgs("", page));
 

@@ -20,7 +20,12 @@ namespace ReactiveUI
         /// <summary>
         /// Reference to the CEF browser instance
         /// </summary>
-        public ChromiumWebBrowser chromeBrowser = null;
+        private ChromiumWebBrowser chromeBrowser = null;
+        public ChromiumWebBrowser ChromeBrowser
+        {
+            get { return chromeBrowser; }
+            set { chromeBrowser = value; }
+        }
 
         /// <summary>
         /// Class Initializer. Initializes CEF and the renderer

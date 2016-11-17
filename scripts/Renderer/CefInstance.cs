@@ -56,26 +56,33 @@ namespace ReactiveUI.Renderer
             CefSettings settings = new CefSettings();
             form.Text = "REACTive";
 
-            if (!File.Exists(Constants.htmlResource+"index.html"))
+            try
+            {
+                if (!File.Exists(Constants.htmlResource + "index.html"))
+                    throw new FileNotFoundException();
+
+                Cef.Initialize(settings);
+                ChromiumWebBrowser chromeBrowser = new ChromiumWebBrowser(Constants.htmlResource + "index.html");
+                form.Controls.Add(chromeBrowser);
+                chromeBrowser.Dock = DockStyle.Fill;
+
+                BrowserSettings browserSettings = new BrowserSettings();
+                browserSettings.FileAccessFromFileUrls = CefState.Enabled;
+                browserSettings.UniversalAccessFromFileUrls = CefState.Enabled;
+                chromeBrowser.BrowserSettings = browserSettings;
+
+                _instanceMainWindow = form;
+                _instanceBrowser = chromeBrowser;
+                Reactive.Framework.Error.Debug.Log(string.Format("Initialized Renderer | CEF# v{0}", Cef.CefSharpVersion));
+                return chromeBrowser;
+            }
+            catch (FileNotFoundException e)
             {
                 GUI.MessageBox.ShowMessage("Unable to load main interface", "ERROR");
                 Application.Exit();
             }
 
-            Cef.Initialize(settings);
-            ChromiumWebBrowser chromeBrowser = new ChromiumWebBrowser(Constants.htmlResource + "index.html");
-            form.Controls.Add(chromeBrowser);
-            chromeBrowser.Dock = DockStyle.Fill;
-
-            BrowserSettings browserSettings = new BrowserSettings();
-            browserSettings.FileAccessFromFileUrls = CefState.Enabled;
-            browserSettings.UniversalAccessFromFileUrls = CefState.Enabled;
-            chromeBrowser.BrowserSettings = browserSettings;
-
-            _instanceMainWindow = form;
-            _instanceBrowser = chromeBrowser;
-            Reactive.Framework.Error.Debug.Log(string.Format("Initialized Renderer | CEF# v{0}", Cef.CefSharpVersion));
-            return chromeBrowser;
+            return null;
         }
 
 

@@ -91,7 +91,7 @@ namespace ReactiveUI.Renderer
         /// </summary>
         /// <param name="page"></param>
         /// <param name="browser"></param>
-        public static void LoadPage(string page, ChromiumWebBrowser browser = null, string pageURL = null)
+        public static string LoadPage(string page, ChromiumWebBrowser browser = null, string pageURL = null)
         {
             if (!File.Exists(Constants.htmlResource + page))
             {
@@ -116,11 +116,13 @@ namespace ReactiveUI.Renderer
             if (String.IsNullOrEmpty(pageURL))
             {
 
-                browser.Load(Constants.htmlResource + page);
+                return page;
+                //browser.Load(Constants.htmlResource + page);
             }
             else
             {
-                browser.Load(pageURL + page);
+                return page;
+                //browser.Load(pageURL + page);
             }
 
         }

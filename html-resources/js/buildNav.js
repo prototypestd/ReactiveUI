@@ -10,7 +10,7 @@
             for (i = (oldLength+1); i < navigationCommands.navItems.length; i++) {
 
                 text += "<li>";
-                text += "<a href='" + navigationCommands.navItems[i] + ".html' class='active'>";
+                text += '<a href="#"  onclick="navigationCommands.showPage(\'' + navigationCommands.navItems[i] + '\');" class="active">';
                 text += "<i class='fa fa-dashboard icon'> <b class='bg-danger'></b> </i>";
                 text += "<span>" + navigationCommands.navItems[i] + "</span>";
                 text += "</a>";
@@ -23,7 +23,7 @@
             for (i = 0; i < navigationCommands.navItems.length; i++) {
 
                 text += "<li>";
-                text += "<a href='" + navigationCommands.navItems[i] + ".html' class='active'>";
+                text += '<a href="#"  onclick="navigationCommands.showPage(\''+ navigationCommands.navItems[i]+'\');" class="active">';
                 text += "<i class='fa fa-dashboard icon'> <b class='bg-danger'></b> </i>";
                 text += "<span>" + navigationCommands.navItems[i] + "</span>";
                 text += "</a>";

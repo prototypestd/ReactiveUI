@@ -143,15 +143,9 @@
                 <!-- /.aside -->
                 <section id="content"> 
                     <section class="vbox"> 
-                        <header class="header bg-white b-b b-light"> 
-                            <p>Layout with black color</p> 
-                        </header> 
-                        <section class="scrollable wrapper w-f"> 
-                            <p class="h4">Contents...</p> 
+                        <section class="scrollable w-f" style="min-height:100%"> 
+                            <iframe id="ctent" src="#" style="min-width:100%;min-height:100%;border:none;"></iframe>
                         </section> 
-                        <footer class="footer bg-white b-t b-light"> 
-                            <p>This is a footer</p> 
-                        </footer> 
                     </section> 
                     <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a> 
                 </section> 
@@ -175,8 +169,15 @@
 
     <script>
         $(document).ready(function () {
+            var curPage = "";
+
             setInterval(function () {
                 $('#currentTime').text(commonCommands.currentDate);
+
+                if (curPage == "" || curPage != navigationCommands.nextPage) {
+                    document.getElementById('ctent').src = navigationCommands.nextPage;
+                    curPage = navigationCommands.nextPage;
+                }
             }, 1000);
         });
     </script>

@@ -24,6 +24,15 @@ namespace ReactiveUI.Commands
             get { return navItem.ToArray(); }
         }
 
+        /// <summary>
+        /// Next page url
+        /// </summary>
+        private static string nextUrl;
+        public string nextPage
+        {
+            get { return nextUrl; }
+        }
+
 
         public NavigationCommands(ChromiumWebBrowser originalBrowser, Form1 form)
         {
@@ -41,7 +50,7 @@ namespace ReactiveUI.Commands
 
         public void showPage(string page)
         {
-            CefInstance.LoadPage(page + ".html", _instanceBrowser);
+            nextUrl = CefInstance.LoadPage(page + ".html", _instanceBrowser);
         }
 
         public void goBack()

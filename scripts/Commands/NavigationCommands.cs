@@ -12,7 +12,16 @@ namespace ReactiveUI.Commands
     {
         private static ChromiumWebBrowser _instanceBrowser = null;
         private static Form1 _instanceMainWindow = null;
-        public List<string> navItems = new List<string> { "test", "test2" };
+
+        /// <summary>
+        /// Navigation Items
+        /// </summary>
+        private static List<string> navItem = new List<string>() { "test" };
+        public string[] navItems
+        {
+            get { return navItem.ToArray(); }
+        }
+
 
         public NavigationCommands(ChromiumWebBrowser originalBrowser, Form1 form)
         {
@@ -28,6 +37,18 @@ namespace ReactiveUI.Commands
         public void goBack()
         {
             CefInstance.GoBack(_instanceBrowser);
+        }
+
+        /// <summary>
+        /// Dynamically adds a navigation item to the navList
+        /// </summary>
+        /// <param name="page"></param>
+        public static void AddToNav(string page)
+        {
+            if (!String.IsNullOrEmpty(page))
+            {
+                navItem.Add(page);
+            }
         }
     }
 }

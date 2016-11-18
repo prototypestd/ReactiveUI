@@ -1,4 +1,6 @@
 ﻿using CefSharp.WinForms;
+using Reactive;
+using Reactive.Plugin;
 using ReactiveUI.Renderer;
 using System;
 using System.Collections.Generic;
@@ -27,6 +29,14 @@ namespace ReactiveUI.Commands
         {
             _instanceBrowser = originalBrowser;
             _instanceMainWindow = form;
+
+            foreach (var module in App.pluginManager.pluginsList)
+            {
+                if (module.GetType().HasProperty("navItem"))
+                {
+                    AddToNav(module.GetType().GetProperty("navItem").GetValue(module, null).ToString());
+                }
+            }
         }
 
         public void showPage(string page)

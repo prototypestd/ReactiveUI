@@ -1,17 +1,42 @@
 ﻿$(document).ready(function () {
     var nav = document.getElementById('navigation');
     var text;
+    var oldLength = navigationCommands.navItems.length;
+    var hasDone = false;
+    
+    setInterval(function () {
 
-    for (i = 0; i < navigationCommands.navItems.length; i++) {
+        if (oldLength != navigationCommands.navItems.length && hasDone) {
+            for (i = (oldLength+1); i < navigationCommands.navItems.length; i++) {
 
-        text += "<li>";
-        text += "<a href='" + navigationCommands.navItems[i] + ".html' class='active'>";
-        text += "<i class='fa fa-dashboard icon'> <b class='bg-danger'></b> </i>";
-        text += "<span>" + navigationCommands.navItems[i] + "</span>";
-        text += "</a>";
-        text += "</li>";
+                text += "<li>";
+                text += "<a href='" + navigationCommands.navItems[i] + ".html' class='active'>";
+                text += "<i class='fa fa-dashboard icon'> <b class='bg-danger'></b> </i>";
+                text += "<span>" + navigationCommands.navItems[i] + "</span>";
+                text += "</a>";
+                text += "</li>";
 
-    }
+            }
 
-    nav.innerHTML += text;
+            nav.innerHTML += text;
+        } else if (oldLength == navigationCommands.navItems.length && !hasDone) {
+            for (i = 0; i < navigationCommands.navItems.length; i++) {
+
+                text += "<li>";
+                text += "<a href='" + navigationCommands.navItems[i] + ".html' class='active'>";
+                text += "<i class='fa fa-dashboard icon'> <b class='bg-danger'></b> </i>";
+                text += "<span>" + navigationCommands.navItems[i] + "</span>";
+                text += "</a>";
+                text += "</li>";
+
+            }
+
+            nav.innerHTML += text;
+            hasDone = true;
+        } else {
+            return;
+        }
+
+    }, 1000);
+
 });

@@ -269,6 +269,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\PluginCore\PluginCore.csproj">
+      <Project>{7b64048c-a733-4d60-961e-046b4cc0a013}</Project>
+      <Name>PluginCore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ReactiveAI\ReactiveAI.csproj">
       <Project>{d8621713-0f13-4750-9691-bd3f7ac56ab7}</Project>
       <Name>ReactiveAI</Name>

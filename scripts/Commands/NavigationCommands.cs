@@ -48,12 +48,12 @@ namespace ReactiveUI.Commands
             }
         }
 
-        public void showPage(string page)
+        public static void showPage(string page)
         {
             nextUrl = CefInstance.LoadPage(page + ".html", _instanceBrowser);
         }
 
-        public void goBack()
+        public static void goBack()
         {
             CefInstance.GoBack(_instanceBrowser);
         }

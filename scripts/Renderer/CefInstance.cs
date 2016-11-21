@@ -79,7 +79,7 @@ namespace ReactiveUI.Renderer
             catch (FileNotFoundException e)
             {
                 GUI.MessageBox.ShowMessage("Unable to load " + e.FileName, "CEFInstance Error");
-                Application.Exit();
+                Reactive.Framework.Error.Debug.LogFatal("Failed to initalize CEF due to incomplete data. ERROR_CODE: 0404", true);
             }
 
             return null;

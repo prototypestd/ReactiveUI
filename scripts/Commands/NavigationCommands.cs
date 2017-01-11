@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ReactiveUI.Commands
 {
@@ -48,12 +49,12 @@ namespace ReactiveUI.Commands
             }
         }
 
-        public static void showPage(string page)
+        public void showPage(string page)
         {
             nextUrl = CefInstance.LoadPage(page + ".html", _instanceBrowser);
         }
 
-        public static void goBack()
+        public void goBack()
         {
             CefInstance.GoBack(_instanceBrowser);
         }

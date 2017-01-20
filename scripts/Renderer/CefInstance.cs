@@ -5,6 +5,7 @@ using System.IO;
 using System.Windows.Forms;
 using Reactive.Framework.Events;
 using System.Runtime.InteropServices;
+using Reactive.Framework.Error;
 
 namespace ReactiveUI.Renderer
 {
@@ -95,7 +96,7 @@ namespace ReactiveUI.Renderer
         {
             if (!File.Exists(Constants.htmlResource + page))
             {
-                Reactive.Framework.Error.Debug.LogFatal("Renderer: Unable to render the requested page", true, "Unable to render the requested page");
+                Debug.Log("Renderer: Unable to render the requested page", true, "Unable to render the requested page");
             }
 
             if(browser == null)

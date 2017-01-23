@@ -113,6 +113,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="scripts\Commands\CommonCommands.cs" />
     <Compile Include="scripts\Commands\NavigationCommands.cs" />
+    <Compile Include="scripts\Commands\NotificationManager.cs" />
     <Compile Include="scripts\Constants.cs" />
     <Compile Include="scripts\GUI\MessageBox.cs" />
     <Compile Include="scripts\Renderer\CefInstance.cs" />
@@ -389,6 +390,9 @@
     <Content Include="html-resources\js\combodate\combodate.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="html-resources\js\components.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="html-resources\js\datatables\datatables.css">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -545,7 +549,9 @@
     <Content Include="html-resources\js\sortable\jquery.sortable.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="html-resources\js\vue.js" />
+    <Content Include="html-resources\js\vue.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="html-resources\js\vue.min.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

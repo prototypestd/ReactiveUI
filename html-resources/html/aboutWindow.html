@@ -2,13 +2,17 @@
 <html lang="en" class="app">
 <head>
     <meta charset="utf-8" />
-    <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="stylesheet" href="../css/app.v2.css" type="text/css" />
     <link rel="stylesheet" href="../css/font-awesome.css" type="text/css" />
-    <link rel="stylesheet" href="../js/calendar/bootstrap_calendar.css" type="text/css" cache="false" /> <!--[if lt IE 9]> <script src="js/ie/html5shiv.js" cache="false"></script> <script src="js/ie/respond.min.js" cache="false"></script> <script src="js/ie/excanvas.js" cache="false"></script> <![endif]-->
+
+    <script src="../js/vue.js"></script>
+    <script src="../js/components.js"></script>
+
+    <!--[if lt IE 9]> <script src="js/ie/html5shiv.js" cache="false"></script> <script src="js/ie/respond.min.js" cache="false"></script> <script src="js/ie/excanvas.js" cache="false"></script> <![endif]-->
 </head>
 <body>
+    <div id="reactApp" style="height:100%">
     <section class="vbox">
         <section>
             <section class="hbox stretch">
@@ -39,12 +43,12 @@
                                                         <tr>
                                                             <td style="text-align:end;"><strong>REACTive</strong></td>
                                                             <td>:</td>
-                                                            <td id="reactiveVersion">5</td>
+                                                            <td id="reactiveVersion">{{reactiveVersion}}</td>
                                                         </tr>
                                                         <tr>
                                                             <td style="text-align:end;"><strong>CEF</strong></td>
                                                             <td>:</td>
-                                                            <td id="cefVersion">5</td>
+                                                            <td id="cefVersion">{{cefVersion}}</td>
                                                         </tr>
                                                     </table>
                                                 </p>
@@ -64,30 +68,16 @@
             </section>
         </section>
     </section>
-
-    <script src="../js/app.v2.js"></script> <!-- Bootstrap --> <!-- App -->
-    <script src="../js/charts/easypiechart/jquery.easy-pie-chart.js" cache="false"></script>
-    <script src="../js/charts/sparkline/jquery.sparkline.min.js" cache="false"></script>
-    <script src="../js/charts/flot/jquery.flot.min.js" cache="false"></script>
-    <script src="../js/charts/flot/jquery.flot.tooltip.min.js" cache="false"></script>
-    <script src="../js/charts/flot/jquery.flot.resize.js" cache="false"></script>
-    <script src="../js/charts/flot/jquery.flot.grow.js" cache="false"></script>
-    <script src="../js/charts/flot/demo.js" cache="false"></script>
-    <script src="../js/calendar/bootstrap_calendar.js" cache="false"></script>
-    <script src="../js/calendar/demo.js" cache="false"></script>
-    <script src="../js/sortable/jquery.sortable.js" cache="false"></script>
+        </div>
 
     <script>
-        $(document).ready(function () {
-            setInterval(function () {
-                $('#currentTime').text(commonCommands.currentDate);
-            }, 1000);
-        });
-
-        document.addEventListener("DOMContentLoaded", function () {
-            document.getElementById("reactiveVersion").textContent = commonCommands.reactiveVersion;
-            document.getElementById("cefVersion").textContent = commonCommands.cefVersion + " | Revision: " + commonCommands.cefHash;
-        });
+        new Vue({
+            el: '#reactApp',
+            data: {
+                reactiveVersion: commonCommands.reactiveVersion,
+                cefVersion: commonCommands.cefVersion + '| Revision: ' + commonCommands.cefHash,
+            },
+        })
     </script>
 </body>
 </html>

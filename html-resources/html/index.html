@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="stylesheet" href="../css/app.v2.css" type="text/css" />
     <link rel="stylesheet" href="../css/font-awesome.css" type="text/css" />
+
+    <script src="../js/app.v2.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="../js/buildNav.js" cache="false"></script>
     <!--[if lt IE 9]> <script src="js/ie/html5shiv.js" cache="false"></script> <script src="js/ie/respond.min.js" cache="false"></script> <script src="js/ie/excanvas.js" cache="false"></script> <![endif]-->
 </head>
 <body>
+    <div id="reactApp" style="height:100%;">
     <section class="vbox">
         <header class="bg-dark dk header navbar navbar-fixed-top-xs">
             <div class="navbar-header aside-md">
@@ -24,7 +30,7 @@
                         <div class="wrapper lter m-t-n-xs">
                             <a href="#" class="thumb pull-left m-r"> <img src="images/avatar.jpg" class="img-circle"> </a>
                             <div class="clear">
-                                <a href="#"><span class="text-white font-bold">@Mike Mcalidek</span></a>
+                                <a href="#"><span class="text-white font-bold">@{{username}}</span></a>
                                 <small class="block">Art Director</small>
                             </div>
                         </div>
@@ -32,7 +38,7 @@
                 </li>
                 <li>
                     <div style="padding:15px;">
-                        <i class="fa fa-clock-o"></i> <span id="currentTime" class="font-bold">Activity</span>
+                        <i class="fa fa-clock-o"></i> <span id="currentTime" class="font-bold">{{curTime}}</span>
                     </div>
                 </li>
             </ul>
@@ -47,12 +53,7 @@
                                 <strong>You have <span class="count">2</span> notifications</strong>
                             </header>
                             <div class="list-group list-group-alt animated fadeInRight">
-                                <a href="#" class="media list-group-item">
-                                    <span class="media-body block m-b-none">
-                                        1.0 initial released<br>
-                                        <small class="text-muted">1 hour ago</small>
-                                    </span>
-                                </a>
+                                <notification notiNum=0></notification>
                             </div>
                             <footer class="panel-footer text-sm">
                                 <a href="#" class="pull-right"><i class="fa fa-cog"></i></a>
@@ -151,24 +152,35 @@
             </section>
         </section>
     </section>
+    </div>
 
-    <script src="../js/app.v2.js"></script>
-    <script src="../js/vue.min.js"></script>
-    <script src="../js/buildNav.js" cache="false"></script>
 
     <script>
-        $(document).ready(function () {
-            var curPage = "";
+        new Vue({
+            el: '#reactApp',
+            data: {
+                username: 'haikalizz',
+                curTime: '',
+                notifications: [],
+                curPage: '',
+            },
+            mounted: function () {
+                this.$nextTick(function () {
+                    setInterval(function () {
+                        // Gets the date from backend and renders it
+                        this.curTime = commonCommands.currentDate;
 
-            setInterval(function () {
-                $('#currentTime').text(commonCommands.currentDate);
+                        // Handles the inline navigation
+                        if (this.curPage == "" || this.curPage != navigationCommands.nextPage) {
+                            document.getElementById('ctent').src = navigationCommands.nextPage;
+                            this.curPage = navigationCommands.nextPage;
+                        }
 
-                if (curPage == "" || curPage != navigationCommands.nextPage) {
-                    document.getElementById('ctent').src = navigationCommands.nextPage;
-                    curPage = navigationCommands.nextPage;
-                }
-            }, 1000);
-        });
+
+                    }.bind(this),1000)
+                })
+            }
+        })
     </script>
 </body>
 </html>

@@ -35,7 +35,6 @@ namespace ReactiveUI
             InitializeComponent();
             chromeBrowser = CefInstance.InitializeCEF(this);
             Application.ApplicationExit += Debug.Exit;
-            Reactive.Framework.Events.ApplicationEvents.addToExitEvent(Shutdown);
 
             cefInstance = new CefInstance(chromeBrowser, this);
             cefInstance.chromeBrowser.RegisterJsObject("commonCommands", new CommonCommands(chromeBrowser, this));
@@ -50,7 +49,7 @@ namespace ReactiveUI
             SystemMenu.CreateSysMenu(this);
         }
 
-        private void Shutdown()
+        private void Form1_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
         {
             Cef.Shutdown();
         }

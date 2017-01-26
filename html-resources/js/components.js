@@ -9,14 +9,10 @@ Vue.component('notification', {
     data: function () {
         return {
             content: notificationManager.notification[this.notiNum],
-            time: notificationManager.notificationTime[this.notiNum],
         }
     },
     mounted: function () {
         this.$nextTick(function () {
-            setInterval(function () {
-                this.time = notificationManager.notificationTime[this.notiNum];
-            }.bind(this), 1000)
         })
     }
 })

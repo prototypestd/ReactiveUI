@@ -20,9 +20,11 @@ namespace ReactiveUI.Commands
         /// Navigation Items
         /// </summary>
         private static List<string> navItem = new List<string>() { "test" };
-        public string[] navItems
+        public string[] navItems()
         {
-            get { return navItem.ToArray(); }
+            /// <see cref="https://msdn.microsoft.com/en-us/library/0fss9skc.aspx"/> 
+            /// Let's keep this tamper-proof since we have our own method for adding to navigation items.
+            return (string[])navItem.ToArray().Clone();
         }
 
         /// <summary>

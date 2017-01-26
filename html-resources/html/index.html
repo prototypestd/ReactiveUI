@@ -45,36 +45,33 @@
             <ul class="nav navbar-nav navbar-right hidden-xs nav-user">
                 <li class="hidden-xs">
                     <a href="#" class="dropdown-toggle dk" data-toggle="dropdown">
-                        <i class="fa fa-bell"></i> <span class="badge badge-sm up bg-danger m-l-n-sm count">2</span>
+                        <i class="fa fa-bell"></i> <span class="badge badge-sm up bg-danger m-l-n-sm count">{{notiCount}}</span>
                     </a>
                     <section class="dropdown-menu aside-xl">
                         <section class="panel bg-white">
                             <header class="panel-heading b-light bg-light">
-                                <strong>You have <span class="count">2</span> notifications</strong>
+                                <strong>You have <span class="count">{{notiCount}}</span> notification</strong>
                             </header>
                             <div class="list-group list-group-alt animated fadeInRight">
                                 <notification notiNum=0></notification>
                             </div>
                             <footer class="panel-footer text-sm">
-                                <a href="#" class="pull-right"><i class="fa fa-cog"></i></a>
-                                <a href="#notes" data-toggle="class:show animated fadeInRight">See all the notifications</a>
                             </footer>
                         </section>
                     </section>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="thumb-sm avatar pull-left"> <img src="images/avatar.jpg"> </span>
+                        <span class="thumb-sm avatar pull-left"> <img src="../images/avatar.jpg"> </span>
                         <span id="userName"></span> <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu animated fadeInRight">
                         <span class="arrow top"></span>
                         <li> <a href="#">Settings</a> </li>
-                        <li> <a href="profile.html">Profile</a> </li>
-                        <li> <a href="#"> <span class="badge bg-danger pull-right">3</span> Notifications </a> </li>
+                        <li> <a href="#">Profile</a> </li>
                         <li> <a href="#" onclick="navigationCommands.showPage('aboutWindow');">Help</a> </li>
                         <li class="divider"></li>
-                        <li> <a href="modal.lockme.html" data-toggle="ajaxModal">Logout</a> </li>
+                        <li> <a v-on:click="exitApp">Exit</a> </li>
                     </ul>
                 </li>
             </ul>
@@ -128,14 +125,6 @@
                                 <i class="fa fa-angle-left text"></i>
                                 <i class="fa fa-angle-right text-active"></i>
                             </a>
-                            <div class="btn-group hidden-nav-xs">
-                                <button type="button" title="Chats" class="btn btn-icon btn-sm btn-dark" data-toggle="dropdown" data-target="#chat">
-                                    <i class="fa fa-comment-o"></i>
-                                </button>
-                                <button type="button" title="Contacts" class="btn btn-icon btn-sm btn-dark" data-toggle="dropdown" data-target="#invite">
-                                    <i class="fa fa-facebook"></i>
-                                </button>
-                            </div>
                         </footer>
                     </section>
                 </aside>
@@ -163,6 +152,7 @@
                 curTime: '',
                 notifications: [],
                 curPage: '',
+                notiCount: notificationManager.notiCount,
             },
             mounted: function () {
                 this.$nextTick(function () {
@@ -179,6 +169,15 @@
 
                     }.bind(this),1000)
                 })
+            },
+            methods: {
+                exitApp: function (event) {
+                    if (confirm('Are you sure you want to exit?')) {
+                        commonCommands.exitApp();
+                    } else {
+                        // Do nothing!
+                    }
+                }
             }
         })
     </script>

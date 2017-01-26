@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace ReactiveUI.Commands
 {
+    /// <summary>
+    /// The notification manager handles the interface for notifications between interface and backend.
+    /// </summary>
     public class NotificationManager
     {
         private static ChromiumWebBrowser _instanceBrowser = null;
@@ -17,6 +20,7 @@ namespace ReactiveUI.Commands
         /// </summary>
         private static List<string> noti = new List<string>() { "test" };
         private static List<string> notinTime = new List<string>() { "test" };
+        private static int noticount = 0;
 
         public string[] notification
         {
@@ -26,6 +30,11 @@ namespace ReactiveUI.Commands
         public string[] notificationTime
         {
             get { return notinTime.ToArray(); }
+        }
+
+        public string notiCount
+        {
+            get { return noticount.ToString(); }
         }
 
 

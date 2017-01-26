@@ -9,6 +9,7 @@ using System.Diagnostics;
 using System.IO;
 using ReactiveUI.Renderer;
 using Reactive;
+using System.Windows.Forms;
 
 namespace ReactiveUI.Commands
 {
@@ -56,7 +57,10 @@ namespace ReactiveUI.Commands
             _instanceBrowser.ShowDevTools();
         }
 
-
+        public void exitApp()
+        {
+            Application.Exit();
+        }
 
     }
 }

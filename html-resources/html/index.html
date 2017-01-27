@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="stylesheet" href="../css/app.v2.css" type="text/css" />
     <link rel="stylesheet" href="../css/font-awesome.css" type="text/css" />
+    <link rel="stylesheet" href="../css/element.css" type="text/css" />
 
     <script src="../js/app.v2.js"></script>
     <script src="../js/vue.js"></script>
+    <script src="../js/element.js"></script>
     <script src="../js/components.js"></script>
     <script src="../js/buildNav.js" cache="false"></script>
+
     <!--[if lt IE 9]> <script src="js/ie/html5shiv.js" cache="false"></script> <script src="js/ie/respond.min.js" cache="false"></script> <script src="js/ie/excanvas.js" cache="false"></script> <![endif]-->
 </head>
 <body>
@@ -68,7 +71,7 @@
                     <ul class="dropdown-menu animated fadeInRight">
                         <span class="arrow top"></span>
                         <li> <a href="#">Settings</a> </li>
-                        <li> <a href="#">Profile</a> </li>
+                        <li> <a v-on:click="open">Profile</a> </li>
                         <li> <a href="#" onclick="navigationCommands.showPage('aboutWindow');">Help</a> </li>
                         <li class="divider"></li>
                         <li> <a v-on:click="exitApp">Exit</a> </li>
@@ -116,7 +119,6 @@
                                         <header class="panel-heading b-b b-light"> John <i class="fa fa-circle text-success"></i> </header>
                                         <div class="panel-body animated fadeInRight">
                                             <p class="text-sm">No contacts in your lists.</p>
-                                            <p><a href="#" class="btn btn-sm btn-facebook"><i class="fa fa-fw fa-facebook"></i> Invite from Facebook</a></p>
                                         </div>
                                     </section>
                                 </section>
@@ -165,19 +167,32 @@
                             document.getElementById('ctent').src = navigationCommands.nextPage;
                             this.curPage = navigationCommands.nextPage;
                         }
-
-
                     }.bind(this),1000)
                 })
             },
             methods: {
-                exitApp: function (event) {
-                    if (confirm('Are you sure you want to exit?')) {
+                exitApp() {
+                    this.$confirm('Are you sure you want to exit?', 'Warning', {
+                        confirmButtonText: 'Yes',
+                        cancelButtonText: 'No',
+                        type: 'warning'
+                    }).then(() => {
                         commonCommands.exitApp();
-                    } else {
-                        // Do nothing!
-                    }
-                }
+                    }).catch(() => {
+                        this.$message({
+                            type: 'info',
+                            message: 'Shutdown Cancelled'
+                        });          
+                    });
+                },
+                open() {
+                    const h = this.$createElement;
+
+                    this.$notify({
+                        title: 'Title',
+                        message: h('p', { style: 'color: red' }, 'This is a reminder')
+                    });
+                },
             }
         })
     </script>

@@ -40,6 +40,7 @@ namespace ReactiveUI
             cefInstance.chromeBrowser.RegisterJsObject("commonCommands", new CommonCommands(chromeBrowser, this));
             cefInstance.chromeBrowser.RegisterJsObject("navigationCommands", new NavigationCommands(chromeBrowser, this));
             cefInstance.chromeBrowser.RegisterJsObject("notificationManager", new NotificationManager(chromeBrowser, this));
+            cefInstance.chromeBrowser.RegisterJsObject("userManager", new UserManager(chromeBrowser, this));
         }
 
         private void Form1_Load(object sender, EventArgs e)

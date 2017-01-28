@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="app">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="../css/app.v2.css" type="text/css" />
+    <link rel="stylesheet" href="../css/font-awesome.css" type="text/css" />
+    <link rel="stylesheet" href="../css/element.css" type="text/css" />
+
+    <script src="../js/app.v2.js"></script>
+    <script src="../js/vue.js"></script>
+    <script src="../js/element.js"></script>
+    <script src="../js/components.js"></script>
+
+    <!--[if lt IE 9]> <script src="js/ie/html5shiv.js" cache="false"></script> <script src="js/ie/respond.min.js" cache="false"></script> <script src="js/ie/excanvas.js" cache="false"></script> <![endif]-->
+</head>
+<body>
+    <div id="reactApp" style="height:100%">
+        <section class="vbox">
+            <section>
+                <section class="hbox stretch">
+                    <section id="content">
+                        <section class="vbox">
+                            <header class="header bg-white b-b b-light">
+                                <p>About Reactive</p>
+                            </header>
+                            <section class="scrollable wrapper w-f">
+                                <div class="row" style="padding-bottom:25px;">
+                                    <div class="col-md-1">
+                                        <el-button v-on:click="dialogVisible = true">About Reactive</el-button>
+                                    </div>
+                                </div>
+                                <el-tabs v-model="activeName" @tab-click="handleClick">
+                                    <el-tab-pane label="Profile" name="first">
+                                        <form>
+                                            <div>
+                                                <p>Username:</p>
+                                                <input v-model="newUsername" placeholder="Username">
+                                            </div>
+                                        </form>
+                                    </el-tab-pane>
+                                    <el-tab-pane label="Config" name="second">Config</el-tab-pane>
+                                    <el-tab-pane label="Role" name="third">Role</el-tab-pane>
+                                    <el-tab-pane label="Task" name="fourth">Task</el-tab-pane>
+                                </el-tabs>
+                            </section>
+                            <footer class="footer bg-white b-t b-light">
+                                <p>This is a footer</p>
+                            </footer>
+                        </section>
+                        <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>
+                    </section>
+                    <aside class="bg-light lter b-l aside-md hide" id="notes"> <div class="wrapper">Notification</div> </aside>
+                </section>
+            </section>
+        </section>
+
+        <el-dialog title="About Reactive" v-model="dialogVisible" size="large">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>
+                        Reactive
+                        Version 1.0</br>
+                        &copy; 2017 Prototype Studios</br>
+                        All rights reserved.</br>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="well m-t">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h4><strong>Version Info</strong></h4>
+                                <p>
+                                    <table>
+                                        <tr>
+                                            <td style="text-align:end;"><strong>REACTive</strong></td>
+                                            <td>:</td>
+                                            <td id="reactiveVersion">{{reactiveVersion}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:end;"><strong>CEF</strong></td>
+                                            <td>:</td>
+                                            <td id="cefVersion">{{cefVersion}}</td>
+                                        </tr>
+                                    </table>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <span slot="footer" class="dialog-footer">
+            </span>
+        </el-dialog>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#reactApp',
+            data: {
+                dialogVisible: false,
+                activeName: 'first',
+                reactiveVersion: commonCommands.reactiveVersion,
+                cefVersion: commonCommands.cefVersion + '| Revision: ' + commonCommands.cefHash,
+                newUsername:'',
+            },
+            methods: {
+                handleClick(tab, event) {
+                    console.log(tab, event);
+                },
+                saveForm() {
+                    userManager.userName = this.newUsername;
+                    userManager.SaveSettings();
+                }
+            }
+        })
+    </script>
+</body>
+</html>

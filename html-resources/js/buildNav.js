@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     var nav = document.getElementById('navigation');
-    var text;
+    var text = '';
     var oldLength = navigationCommands.navItems.length;
     var hasDone = false;
     

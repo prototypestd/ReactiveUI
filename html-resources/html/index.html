@@ -19,37 +19,37 @@
 <body>
     <div id="reactApp" style="height:100%;">
     <section class="vbox">
-        <header class="bg-dark dk header navbar navbar-fixed-top-xs">
+        <header class="blue header navbar navbar-fixed-top-xs">
             <div class="navbar-header aside-md">
                 <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen" data-target="#nav"> <i class="fa fa-bars"></i> </a>
-                <a href="#" class="navbar-brand" data-toggle="fullscreen">REACTIVE</a>
+                <a href="#" class="navbar-brand white-text" data-toggle="fullscreen">REACTIVE</a>
                 <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".nav-user"> <i class="fa fa-cog"></i> </a>
             </div>
             <ul class="nav navbar-nav hidden-xs">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle dker" data-toggle="dropdown">
-                        <i class="fa fa-building-o"></i> <span class="font-bold">Activity</span>
+                    <a href="#" class="dropdown-toggle blue darken-1" data-toggle="dropdown">
+                        <i class="fa fa-building-o white-text"></i> <span class="font-bold white-text">Activity</span>
                     </a>
                     <section class="dropdown-menu aside-xl on animated fadeInLeft no-borders lt">
-                        <div class="wrapper lter m-t-n-xs">
+                        <div class="wrapper m-t-n-xs">
                             <a href="#" class="thumb pull-left m-r"> <img src="images/avatar.jpg" class="img-circle"> </a>
                             <div class="clear">
-                                <a href="#"><span class="text-white font-bold">@{{username}}</span></a>
+                                <a href="#"><span class="black-text font-bold">@{{username}}</span></a>
                                 <small class="block">Art Director</small>
                             </div>
                         </div>
                     </section>
                 </li>
                 <li>
-                    <div style="padding:15px;">
-                        <i class="fa fa-clock-o"></i> <span id="currentTime" class="font-bold">{{curTime}}</span>
+                    <div class="blue darken-1" style="padding:15px;">
+                        <i class="fa fa-clock-o white-text"></i> <span id="currentTime" class="font-bold white-text">{{curTime}}</span>
                     </div>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right hidden-xs nav-user">
                 <li class="hidden-xs">
-                    <a href="#" class="dropdown-toggle dk" data-toggle="dropdown">
-                        <i class="fa fa-bell"></i> <span class="badge badge-sm up bg-danger m-l-n-sm count">{{notiCount}}</span>
+                    <a href="#" class="dropdown-toggle blue darken-1" data-toggle="dropdown">
+                        <i class="fa fa-bell white-text"></i> <span class="badge badge-sm up bg-danger m-l-n-sm count">{{notiCount}}</span>
                     </a>
                     <section class="dropdown-menu aside-xl">
                         <section class="panel bg-white">
@@ -83,7 +83,7 @@
         <section>
             <section class="hbox stretch">
                 <!-- .aside -->
-                <aside class="bg-dark lter aside-md hidden-print" id="nav">
+                <aside class="blue lighten-3 aside-md hidden-print z-depth-2 nav-xs" id="nav">
                     <section class="vbox">
                         <section class="w-f scrollable">
                             <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="5px" data-color="#333333">
@@ -124,10 +124,11 @@
                                     </section>
                                 </section>
                             </div>
+                            <!-- This is removed until further noticed 
                             <a href="#nav" data-toggle="class:nav-xs" class="pull-right btn btn-sm btn-dark btn-icon">
                                 <i class="fa fa-angle-left text"></i>
                                 <i class="fa fa-angle-right text-active"></i>
-                            </a>
+                            </a>-->
                         </footer>
                     </section>
                 </aside>

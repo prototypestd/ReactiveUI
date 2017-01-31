@@ -142,6 +142,9 @@ namespace ReactiveUI.Renderer
         }
     }
 
+    /// <summary>
+    /// Appends the System Menu (The menu when you right click the title bar)
+    /// </summary>
     static class SystemMenu
     {
         // P/Invoke constants
@@ -161,6 +164,7 @@ namespace ReactiveUI.Renderer
 
         // ID for the Chrome dev tools item on the system menu
         public static int SYSMENU_CHROME_DEV_TOOLS = 0x1;
+        public static int SYSMENU_TEST = 0x2;
 
         public static void CreateSysMenu(Form frm)
         {
@@ -178,6 +182,7 @@ namespace ReactiveUI.Renderer
 
             // Add the About menu item
             AppendMenu(hSysMenu, MF_STRING, SYSMENU_CHROME_DEV_TOOLS, "&Chrome Dev Tools");
+            AppendMenu(hSysMenu, MF_STRING, SYSMENU_TEST, "Test");
         }
     }
 

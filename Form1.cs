@@ -2,6 +2,7 @@
 using CefSharp.WinForms;
 using Reactive;
 using Reactive.Framework.Error;
+using Reactive.Framework.Events;
 using ReactiveUI.Commands;
 using ReactiveUI.Renderer;
 using System;
@@ -35,6 +36,7 @@ namespace ReactiveUI
             InitializeComponent();
             chromeBrowser = CefInstance.InitializeCEF(this);
             Application.ApplicationExit += Debug.Exit;
+            ApplicationEvents.addToExitEvent(Shutdown);
 
             cefInstance = new CefInstance(chromeBrowser, this);
             cefInstance.chromeBrowser.RegisterJsObject("commonCommands", new CommonCommands(chromeBrowser, this));
@@ -45,12 +47,11 @@ namespace ReactiveUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ReactiveAI.Speech.SpeechTalk.Talk("Welcome Back!");
             App.pluginManager.StartHost();
             SystemMenu.CreateSysMenu(this);
         }
 
-        private void Form1_FormClosing(object sender, System.Windows.Forms.FormClosingEventArgs e)
+        private void Shutdown()
         {
             Cef.Shutdown();
         }

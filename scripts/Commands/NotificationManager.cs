@@ -9,6 +9,27 @@ using System.Linq;
 namespace ReactiveUI.Commands
 {
     /// <summary>
+    /// A container for notification items.
+    /// </summary>
+    public struct NotificationItem
+    {
+        public int notificationId;
+        public string notificationContent;
+        public string sender;
+        public int timestamp;
+        public NotificationLevels type;
+    }
+
+    public enum NotificationLevels
+    {
+        info = 0,
+        warning = 1,
+        fatal = 2,
+        system = 3,
+        unknown = 4,
+    }
+
+    /// <summary>
     /// The notification manager handles the interface for notifications between interface and backend.
     /// </summary>
     public class NotificationManager
@@ -25,9 +46,9 @@ namespace ReactiveUI.Commands
         /// <summary>
         /// A list of notifications.
         /// </summary>
-        /// TODO: Find a way to also include a timestamp in the list.
-        private static Dictionary<int, string> notificationItems = new Dictionary<int, string>();
-        public string[] notification
+        /// TODO: Find a way to return a specific notification to the renderer
+        private static Dictionary<int, NotificationItem> notificationItems = new Dictionary<int, NotificationItem>();
+        public NotificationItem[] notification
         {
             get { return notificationItems.Values.ToArray(); }
         }
@@ -45,13 +66,9 @@ namespace ReactiveUI.Commands
         /// Notifies the user of anything.
         /// </summary>
         /// <param name="content">The message to send to user</param>
-        /// TODO: Add support for multiple levels of notification items. (eg: Important, Warning, Message)
         /// TODO: Improve the UI for notification. This depends on the level of notification. (eg: Important level should so a toast tip. Message level should be in notification panel)
-        public static void NotifyUser(string content)
+        public static void NotifyUser(NotificationItem content)
         {
-            if (String.IsNullOrEmpty(content))
-                return;
-
             int notiId = notificationItems.Count + 1;
             notificationItems.Add(notiId, content);
         }

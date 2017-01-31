@@ -43,6 +43,7 @@ namespace ReactiveUI
             cefInstance.chromeBrowser.RegisterJsObject("navigationCommands", new NavigationCommands(chromeBrowser, this));
             cefInstance.chromeBrowser.RegisterJsObject("notificationManager", new NotificationManager(chromeBrowser, this));
             cefInstance.chromeBrowser.RegisterJsObject("userManager", new UserManager(chromeBrowser, this));
+            Constants.locManager.LoadLocalization();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -65,6 +66,10 @@ namespace ReactiveUI
                ((int)m.WParam == SystemMenu.SYSMENU_CHROME_DEV_TOOLS))
             {
                 chromeBrowser.ShowDevTools();
+            }else if((m.Msg == SystemMenu.WM_SYSCOMMAND) &&
+               ((int)m.WParam == SystemMenu.SYSMENU_TEST))
+            {
+                MessageBox.Show("Test");
             }
         }
     }

@@ -78,5 +78,15 @@ namespace ReactiveUI.Commands
             Application.Exit();
         }
 
+        /// <summary>
+        /// Translates a string
+        /// </summary>
+        /// <param name="toTranslate"></param>
+        /// <returns></returns>
+        public string translateString(string toTranslate)
+        {
+            return Constants.locManager.GetText(toTranslate);
+        }
+
     }
 }

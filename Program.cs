@@ -34,6 +34,7 @@ namespace ReactiveUI
             Reactive.App.InvokeBeforeRun();
 
             Debug.Log("Application: Initialized subsystems");
+            Reactive.App.pluginManager.StartHost();
             Application.Run(new Form1());
         }
     }

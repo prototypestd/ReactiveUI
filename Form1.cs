@@ -48,7 +48,6 @@ namespace ReactiveUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            App.pluginManager.StartHost();
             SystemMenu.CreateSysMenu(this);
         }
 

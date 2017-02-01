@@ -228,7 +228,10 @@
     <Content Include="html-resources\js\components.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="html-resources\js\core\index.js">
+    <Content Include="html-resources\js\core\indexWindow.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="html-resources\js\core\settingsWindow.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="html-resources\js\element.js">

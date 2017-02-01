@@ -6,6 +6,8 @@
         notifications: [],
         curPage: '',
         notiCount: notificationManager.notiCount,
+
+        lang_myApps: commonCommands.translateString("myApps"),
     },
     mounted: function () {
         this.$nextTick(function () {
@@ -36,12 +38,12 @@
                 });
             });
         },
-        open() {
+        open(message,title) {
             const h = this.$createElement;
 
             this.$notify({
-                title: 'Title',
-                message: h('p', { style: 'color: red' }, 'This is a reminder')
+                title: title,
+                message: h('p', { style: 'color: red' }, message)
             });
         },
     }

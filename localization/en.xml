@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Localization>
   <Text name="formName" value="Hello World"></Text>
+  <Text name="myApps" value="My Apps"></Text>
 </Localization>

@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Localization>
   <Text name="formName" value="Hello World"></Text>
+  
+  <!-- Header -->
+  <Text name="exit" value="Exit"></Text>
+  <Text name="help" value="Help"></Text>
   <Text name="myApps" value="My Apps"></Text>
+  <Text name="profile" value="Profile"></Text>
+  <Text name="settings" value="Settings"></Text>
+
 </Localization>

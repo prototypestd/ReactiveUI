@@ -8,6 +8,10 @@
         notiCount: notificationManager.notiCount,
 
         lang_myApps: commonCommands.translateString("myApps"),
+        lang_Settings: commonCommands.translateString("settings"),
+        lang_Exit: commonCommands.translateString("exit"),
+        lang_Profile: commonCommands.translateString("profile"),
+        lang_Help: commonCommands.translateString("help"),
     },
     mounted: function () {
         this.$nextTick(function () {

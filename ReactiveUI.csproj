@@ -234,6 +234,9 @@
     <Content Include="html-resources\js\components\avatar\avatar.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="html-resources\js\components\shortkey\shortkey.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="html-resources\js\core\indexWindow.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

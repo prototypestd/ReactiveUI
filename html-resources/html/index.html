@@ -63,7 +63,7 @@
                         <span class="arrow top"></span>
                         <li> <a href="#" onclick="navigationCommands.showPage('settingsWindow');">{{lang_Settings}}</a> </li>
                         <li> <a v-on:click="open('Not yet implemented','Error')">{{lang_Profile}}</a> </li>
-                        <li> <a href="#">{{lang_Help}}</a> </li>
+                        <li> <a v-shortkey.once="['ctrl', 'alt', 'o']" @shortkey="open('Not yet implemented','Error')">{{lang_Help}}</a> </li>
                         <li class="divider"></li>
                         <li> <a v-on:click="exitApp">{{lang_Exit}}</a> </li>
                     </ul>
@@ -109,6 +109,7 @@
     </div>
 
     <script src="../js/components/avatar/avatar.js"></script>
+    <script src="../js/components/shortkey/shortkey.js"></script>
     <script src="../js/core/indexWindow.js"></script>
 </body>
 </html>

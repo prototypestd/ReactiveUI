@@ -1,4 +1,6 @@
-﻿new Vue({
+﻿Vue.use(ShortKey)
+
+new Vue({
     el: '#reactApp',
     data: {
         username: 'haikalizz',

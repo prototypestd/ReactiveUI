@@ -13,6 +13,9 @@
         lang_Profile: commonCommands.translateString("profile"),
         lang_Help: commonCommands.translateString("help"),
     },
+    components: {
+        'avatar': Avatar.Avatar
+    },
     mounted: function () {
         this.$nextTick(function () {
             setInterval(function () {

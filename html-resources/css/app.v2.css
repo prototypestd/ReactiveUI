@@ -3080,6 +3080,7 @@ textarea.input-group-sm > .form-control, textarea.input-group-sm > .input-group-
 .nav .caret {
     border-top-color: #428bca;
     border-bottom-color: #428bca;
+    margin-top:-7.5px;
 }
 
 .nav a:hover .caret {
@@ -9730,7 +9731,6 @@ a:hover .caret-white {
 }
 
 .avatar {
-    border: 1px solid rgba(255,255,255,0.35);
     display: block;
     border-radius: 500px;
     white-space: nowrap;

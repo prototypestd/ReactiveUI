@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Reactive.Framework.Events;
 using System.Runtime.InteropServices;
 using Reactive.Framework.Error;
+using System.Collections.Generic;
 
 namespace ReactiveUI.Renderer
 {
@@ -31,6 +32,8 @@ namespace ReactiveUI.Renderer
         private static Form _instanceMainWindow = null;
         private static string prevPage;
 
+        private static Dictionary<string, object> jsObjects = new Dictionary<string, object>();
+
         /// <summary>
         /// Initializes the class
         /// </summary>
@@ -40,6 +43,21 @@ namespace ReactiveUI.Renderer
         {
             _instanceBrowser = originalBrowser;
             _instanceMainWindow = form;
+        }
+
+        public CefInstance RegisterObjects()
+        {
+            List<string> names = new List<string>();
+
+            foreach(string key in jsObjects.Keys)
+            {
+                names.Add(key);
+            }
+            for(int i=0; i < jsObjects.Count; i++)
+            {
+                _instanceBrowser.RegisterJsObject(names[i], jsObjects[names[i]]);
+            }
+            return this;
         }
 
         /// <summary>
@@ -139,6 +157,12 @@ namespace ReactiveUI.Renderer
         public static void GoBack(ChromiumWebBrowser browser)
         {
             browser.Load(Constants.htmlResource + prevPage);
+        }
+
+        public CefInstance AddToJSObjects(string name,object toBind)
+        {
+            jsObjects.Add(name, toBind);
+            return this;
         }
     }
 

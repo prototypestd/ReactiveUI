@@ -1,5 +1,6 @@
 ﻿using CefSharp;
 using CefSharp.WinForms;
+using PluginCore;
 using Reactive;
 using Reactive.Framework.Error;
 using Reactive.Framework.Events;
@@ -39,10 +40,16 @@ namespace ReactiveUI
             ApplicationEvents.addToExitEvent(Shutdown);
 
             cefInstance = new CefInstance(chromeBrowser, this);
-            cefInstance.chromeBrowser.RegisterJsObject("commonCommands", new CommonCommands(chromeBrowser, this));
-            cefInstance.chromeBrowser.RegisterJsObject("navigationCommands", new NavigationCommands(chromeBrowser, this));
-            cefInstance.chromeBrowser.RegisterJsObject("notificationManager", new NotificationManager(chromeBrowser, this));
-            cefInstance.chromeBrowser.RegisterJsObject("userManager", new UserManager(chromeBrowser, this));
+            cefInstance.AddToJSObjects("commonCommands", new CommonCommands(chromeBrowser, this))
+                .AddToJSObjects("navigationCommands", new NavigationCommands(chromeBrowser, this))
+                .AddToJSObjects("notificationManager", new NotificationManager(chromeBrowser, this))
+                .AddToJSObjects("userManager", new UserManager(chromeBrowser, this));
+            cefInstance.RegisterObjects();
+-
+            //cefInstance.chromeBrowser.RegisterJsObject("commonCommands", new CommonCommands(chromeBrowser, this));
+            //cefInstance.chromeBrowser.RegisterJsObject("navigationCommands", new NavigationCommands(chromeBrowser, this));
+            //cefInstance.chromeBrowser.RegisterJsObject("notificationManager", new NotificationManager(chromeBrowser, this));
+            //cefInstance.chromeBrowser.RegisterJsObject("userManager", new UserManager(chromeBrowser, this));
             Constants.locManager.LoadLocalization();
         }
 

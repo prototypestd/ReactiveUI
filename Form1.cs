@@ -1,7 +1,5 @@
 ﻿using CefSharp;
 using CefSharp.WinForms;
-using PluginCore;
-using Reactive;
 using Reactive.Framework.Error;
 using Reactive.Framework.Events;
 using ReactiveUI.Commands;
@@ -45,11 +43,7 @@ namespace ReactiveUI
                 .AddToJSObjects("notificationManager", new NotificationManager(chromeBrowser, this))
                 .AddToJSObjects("userManager", new UserManager(chromeBrowser, this));
             cefInstance.RegisterObjects();
--
-            //cefInstance.chromeBrowser.RegisterJsObject("commonCommands", new CommonCommands(chromeBrowser, this));
-            //cefInstance.chromeBrowser.RegisterJsObject("navigationCommands", new NavigationCommands(chromeBrowser, this));
-            //cefInstance.chromeBrowser.RegisterJsObject("notificationManager", new NotificationManager(chromeBrowser, this));
-            //cefInstance.chromeBrowser.RegisterJsObject("userManager", new UserManager(chromeBrowser, this));
+
             Constants.locManager.LoadLocalization();
         }
 

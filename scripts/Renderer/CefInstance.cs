@@ -32,6 +32,9 @@ namespace ReactiveUI.Renderer
         private static Form _instanceMainWindow = null;
         private static string prevPage;
 
+        /// <summary>
+        /// A list containing all objects to be registered with CEF
+        /// </summary>
         private static Dictionary<string, object> jsObjects = new Dictionary<string, object>();
 
         /// <summary>
@@ -45,6 +48,10 @@ namespace ReactiveUI.Renderer
             _instanceMainWindow = form;
         }
 
+        /// <summary>
+        /// Registers the <see cref="CefInstance.jsObjects"/> into the system.
+        /// </summary>
+        /// <returns></returns>
         public CefInstance RegisterObjects()
         {
             List<string> names = new List<string>();
@@ -159,6 +166,12 @@ namespace ReactiveUI.Renderer
             browser.Load(Constants.htmlResource + prevPage);
         }
 
+        /// <summary>
+        /// Adds commands into the <see cref="CefInstance.jsObjects"/> list
+        /// </summary>
+        /// <param name="name">The name to be associated with the object</param>
+        /// <param name="toBind">The class to be added into the list</param>
+        /// <returns></returns>
         public CefInstance AddToJSObjects(string name,object toBind)
         {
             jsObjects.Add(name, toBind);
